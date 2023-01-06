@@ -13,7 +13,7 @@ const ContextProvider = (props) => {
   const [nextIdList, setNextIdList] = useState(5)
   const [nextIdTodo, setNextIdTodo] = useState(5)
   const [lists, setLists] = useState([
-    { id: 1, description: "cc" },
+    { id: 1, description: "MyFirstList" },
     { id: 2, description: "caca" },
   ])
 
