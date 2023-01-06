@@ -1,8 +1,6 @@
 import { useContext } from "@/components/business/ContextProvider.jsx"
 import Link from "@/components/ui/Link.jsx"
 import routes from "@/routes.js"
-import { useRouter } from "next/router.js"
-import { useCallback } from "react"
 
 const List = () => {
   const { lists, setLists } = useContext()

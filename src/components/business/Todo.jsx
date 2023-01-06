@@ -5,34 +5,31 @@ import { useEffect, useState, useCallback } from "react"
 
 const Todo = (props) => {
   const { todos, setTodos, handleCheckBoxChange } = useContext()
-  /* const { listId } = props
+  const { listId } = props
   const [currentTodos, setCurrentTodos] = useState([])
   const getCurrentTodos = useCallback(() => {
-    const tempoTodo = []
+    const currentTodos = []
     todos.map((todo) => {
-      console.log(listId)
-      console.log(todo.idList)
       if (todo.idList === listId) {
-        tempoTodo.push(todo)
+        currentTodos.push(todo)
       }
     })
-    setCurrentTodos(tempoTodo)
-  }, [])
+    setCurrentTodos(currentTodos)
+  }, [todos, listId])
   useEffect(() => {
     getCurrentTodos()
-  })
-  console.log(currentTodos)
-*/
+  }, [getCurrentTodos])
+
   return (
     <ul>
-      {todos.map((todo) => (
+      {currentTodos.map((todo) => (
         <li key={todo.id}>
           <input
             type="checkbox"
             checked={todo.checked}
             onChange={() => handleCheckBoxChange(todo.id)}
           />
-          <Link href={routes.home}>{todo.text}</Link>
+          <Link href={routes.home}>{todo.description}</Link>
         </li>
       ))}
     </ul>

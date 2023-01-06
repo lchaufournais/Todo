@@ -17,11 +17,7 @@ const ContextProvider = (props) => {
     { id: 2, description: "caca" },
   ])
 
-  const [todos, setTodos] = useState([
-    { idTodo: 1, idList: 1, text: "Élément 1", checked: false },
-    { idTodo: 2, idList: 1, text: "Élément 2", checked: true },
-    { idTodo: 3, idList: 2, text: "Élément 3", checked: false },
-  ])
+  const [todos, setTodos] = useState([])
 
   const getNextIdList = useCallback(() => {
     setNextIdList(nextIdList + 1)

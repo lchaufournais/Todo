@@ -12,7 +12,7 @@ const defaultValidationSchema = yup.object().shape({
 
 const defaultInitialValues = { name: "" }
 
-const FormList = (props) => {
+const FormTodo = (props) => {
   const {
     onSubmit,
     onClick,

@@ -5,7 +5,7 @@ const Home = (props) => {
   const { listId } = props
   return (
     <Page listId={listId} title="List of todo">
-      <Todo />
+      <Todo listId={listId} />
     </Page>
   )
 }
