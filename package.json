@@ -10,6 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroicons/react": "^2.0.13",
     "clsx": "^1.2.1",
     "formik": "^2.2.9",
     "next": "13.1.1",

@@ -2,7 +2,7 @@ import * as yup from "yup"
 import { Form, Formik } from "formik"
 import { descriptionValidator } from "@/validators.js"
 import routes from "@/routes.js"
-import FormField from "@/components/business/FormField.jsx"
+import FormField from "@/components/ui/FormField.jsx"
 import Link from "@/components/ui/Link.jsx"
 import Button from "@/components/ui/Button.jsx"
 
