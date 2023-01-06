@@ -3,7 +3,6 @@ import {
   useState,
   useCallback,
   useContext as useNativeContext,
-  useEffect,
 } from "react"
 
 export const Context = createContext()
@@ -68,10 +67,11 @@ const ContextProvider = (props) => {
     [lists]
   )
 
-  useEffect(() => {
-    console.log("Lists state has been updated!")
-  }, [lists])
-
+  const updateList = useCallback((updatedList) => {
+    setLists((lists) =>
+      lists.map((list) => (list.id === updatedList.id ? updatedList : list))
+    )
+  }, [])
   const handleCheckBoxChange = (id) => {
     setTodos((prevTodos) => {
       const updatedTodos = prevTodos.map((todo) => {
@@ -95,6 +95,7 @@ const ContextProvider = (props) => {
         createList,
         createTodo,
         deleteList,
+        updateList,
       }}
     />
   )

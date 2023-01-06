@@ -7,6 +7,9 @@ const routes = {
   view: {
     list: (listId) => `/lists/${listId}/ViewList`,
   },
+  modify: {
+    list: (listId) => `/lists/${listId}/ModifyList`,
+  },
 }
 
 export default routes

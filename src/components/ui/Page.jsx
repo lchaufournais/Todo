@@ -3,7 +3,7 @@ import Head from "next/head.js"
 import List from "@/components/business/List.jsx"
 import routes from "@/routes.js"
 import Link from "./Link.jsx"
-import { PlusIcon } from "@heroicons/react/24/solid"
+import { PlusIcon, PencilSquareIcon } from "@heroicons/react/24/solid"
 import DeleteButton from "../business/DeleteButton.jsx"
 
 const Page = (props) => {
@@ -24,9 +24,12 @@ const Page = (props) => {
           <PlusIcon className="w-5" />
         </Link>
       </header>
-      <div className="flex font-bold border-b text-xl pb-1.5 mt-2 pl-2">
+      <div className="flex border-b text-xl pb-1.5 mt-2 pl-2">
         <Link href={routes.create.todo(listId)}>
           <PlusIcon className="w-5" />
+        </Link>
+        <Link href={routes.modify.list(listId)}>
+          <PencilSquareIcon className="ml-2 w-5 " />
         </Link>
         <DeleteButton></DeleteButton>
       </div>
