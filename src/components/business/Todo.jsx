@@ -23,13 +23,19 @@ const Todo = (props) => {
   return (
     <ul>
       {currentTodos.map((todo) => (
-        <li key={todo.id}>
+        <li
+          key={todo.id}
+          className="flex justify-start text-2xl px-4 py-2 border-b"
+        >
           <input
             type="checkbox"
             checked={todo.checked}
+            className="accent-green-400 w-6 mr-5"
             onChange={() => handleCheckBoxChange(todo.id)}
           />
-          <Link href={routes.home}>{todo.description}</Link>
+          <Link href={routes.modify.todo(listId, todo.id)} className="pb-2">
+            {todo.description}
+          </Link>
         </li>
       ))}
     </ul>

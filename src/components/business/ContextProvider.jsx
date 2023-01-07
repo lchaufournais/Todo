@@ -72,6 +72,13 @@ const ContextProvider = (props) => {
       lists.map((list) => (list.id === updatedList.id ? updatedList : list))
     )
   }, [])
+
+  const updateTodo = useCallback((updatedTodo) => {
+    setTodos((todos) =>
+      todos.map((todo) => (todo.id === updatedTodo.id ? updatedTodo : todo))
+    )
+  }, [])
+
   const handleCheckBoxChange = (id) => {
     setTodos((prevTodos) => {
       const updatedTodos = prevTodos.map((todo) => {
@@ -80,7 +87,6 @@ const ContextProvider = (props) => {
         }
         return todo
       })
-      //  updateItems(updatedItems)
       return updatedTodos
     })
   }
@@ -96,6 +102,7 @@ const ContextProvider = (props) => {
         createTodo,
         deleteList,
         updateList,
+        updateTodo,
       }}
     />
   )

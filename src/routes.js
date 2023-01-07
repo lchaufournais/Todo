@@ -9,6 +9,7 @@ const routes = {
   },
   modify: {
     list: (listId) => `/lists/${listId}/ModifyList`,
+    todo: (listId, todoId) => `/lists/${listId}/${todoId}/ModifyTodo`,
   },
 }
 
