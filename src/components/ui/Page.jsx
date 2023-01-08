@@ -16,7 +16,7 @@ const Page = (props) => {
       </Head>
       <header className="flex justify-between pt-2 border-b sticky">
         <div className="flex justify-start">
-          <List />
+          <List selectedListId={listId} />
         </div>
         <Link
           href={routes.create.list}

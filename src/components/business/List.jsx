@@ -3,8 +3,9 @@ import Link from "@/components/ui/Link.jsx"
 import routes from "@/routes.js"
 import ProgressBar from "@/components/ui/ProgressBar.jsx"
 
-const List = () => {
+const List = (props) => {
   const { lists, todos } = useContext()
+  const { selectedListId } = props
   const todosChecked = todos.filter(({ checked }) => checked === true)
   const lengthTodo = (listId) => {
     return todos.filter(({ idList }) => idList === listId).length
@@ -41,10 +42,12 @@ const List = () => {
               <div className="px-2">{lengthTodo(list.id)}</div>
             </div>
           </Link>
-          <ProgressBar
-            lengthTodo={lengthTodo(list.id)}
-            lengthTodoChecked={lengthTodoChecked(list.id)}
-          ></ProgressBar>
+          {selectedListId === list.id && (
+            <ProgressBar
+              lengthTodo={lengthTodo(list.id)}
+              lengthTodoChecked={lengthTodoChecked(list.id)}
+            ></ProgressBar>
+          )}
         </div>
       ))}
     </>
