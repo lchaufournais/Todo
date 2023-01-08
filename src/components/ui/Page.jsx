@@ -14,7 +14,18 @@ const Page = (props) => {
       <Head>
         <title>{title} | To do </title>
       </Head>
-      <header className="overflow-x-scroll-hidden overflow-x-scroll flex justify-between pt-2 border-b border-right sticky ">
+      <header
+        className="
+        overflow-x-scroll-hidden
+        overflow-x-scroll
+        flex
+        justify-between
+        pt-2
+        border-b
+        border-right
+        sticky
+      "
+      >
         <div className="flex justify-start border-left ">
           <List selectedListId={listId} />
         </div>
@@ -36,7 +47,19 @@ const Page = (props) => {
           <PlusIcon className="w-5" />
         </Link>
       </header>
-      <div className="w-full flex justify-between border-b text-xl pb-2 mt-2 pl-2 border-right">
+      <div
+        className="
+        w-full
+        flex
+        justify-between
+        border-b
+        text-xl
+        pb-2
+        mt-2
+        pl-2
+        border-right
+      "
+      >
         <div className="flex justify-start">
           <Link href={listId ? routes.create.todo(listId) : ""}>
             <PlusIcon className="w-5" />
