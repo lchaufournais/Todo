@@ -12,6 +12,7 @@ export const useContext = () => useNativeContext(Context)
 const ContextProvider = (props) => {
   const [nextIdList, setNextIdList] = useState(5)
   const [nextIdTodo, setNextIdTodo] = useState(5)
+  const [isChecked, setIsChecked] = useState(false)
   const [lists, setLists] = useState([
     { id: 1, description: "MyFirstList" },
     { id: 2, description: "caca" },
@@ -33,13 +34,12 @@ const ContextProvider = (props) => {
 
   const createList = useCallback(
     (list) => {
-      setLists((lists) => [
-        ...lists,
-        {
-          id: getNextIdList(),
-          ...list,
-        },
-      ])
+      const tempoList = {
+        id: getNextIdList(),
+        ...list,
+      }
+      setLists((lists) => [...lists, tempoList])
+      return tempoList
     },
     [getNextIdList]
   )
@@ -50,6 +50,7 @@ const ContextProvider = (props) => {
         ...todos,
         {
           id: getNextIdTodo(),
+          checked: false,
           ...todo,
         },
       ])
@@ -67,6 +68,18 @@ const ContextProvider = (props) => {
     [lists]
   )
 
+  const deleteTodo = useCallback(
+    (listId, todoId) => {
+      const indexTodo = todos.findIndex(
+        (todo) => todo.id === parseInt(todoId) && todo.idList === listId
+      )
+      const updatedTodo = [...todos]
+      updatedTodo.splice(indexTodo, 1)
+      setTodos(updatedTodo)
+    },
+    [todos]
+  )
+
   const updateList = useCallback((updatedList) => {
     setLists((lists) =>
       lists.map((list) => (list.id === updatedList.id ? updatedList : list))
@@ -79,9 +92,13 @@ const ContextProvider = (props) => {
     )
   }, [])
 
-  const handleCheckBoxChange = (id) => {
-    setTodos((prevTodos) => {
-      const updatedTodos = prevTodos.map((todo) => {
+  const updateIsChecked = useCallback((updateIsCheck) => {
+    setIsChecked(updateIsCheck)
+  }, [])
+
+  const updateTodoCheck = (id) => {
+    setTodos((todos) => {
+      const updatedTodos = todos.map((todo) => {
         if (todo.id === id) {
           return { ...todo, checked: !todo.checked }
         }
@@ -97,12 +114,15 @@ const ContextProvider = (props) => {
       value={{
         todos,
         lists,
-        handleCheckBoxChange,
+        isChecked,
         createList,
         createTodo,
         deleteList,
+        deleteTodo,
         updateList,
         updateTodo,
+        updateIsChecked,
+        updateTodoCheck,
       }}
     />
   )

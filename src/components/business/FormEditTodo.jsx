@@ -12,12 +12,13 @@ const defaultValidationSchema = yup.object().shape({
 
 const defaultInitialValues = { name: "" }
 
-const FormList = (props) => {
+const FormEditTodo = (props) => {
   const {
     onSubmit,
     onClick,
     initialValues = defaultInitialValues,
     descriptionValidator,
+    listId,
     ...otherProps
   } = props
 
@@ -29,22 +30,18 @@ const FormList = (props) => {
     >
       <Form>
         <h1 className="flex font-bold text-xl first:border-b pb-3 mt-2 pl-5">
-          Create a new list
+          Edit to do
         </h1>
-        <FormField
-          defaultValue=""
-          name="description"
-          label="Description"
-        ></FormField>
+        <FormField name="description" label="Description"></FormField>
         <div className="font-bold fixed bottom-4 right-4">
-          <Link href={routes.home} className="mr-5">
+          <Link href={routes.view.list(listId)} className="mr-5">
             Cancel
           </Link>
           <Button
             className="bg-blue-600 text-white rounded-lg h-10 w-16"
             type="submit"
           >
-            Create
+            Edit
           </Button>
         </div>
       </Form>
@@ -52,4 +49,4 @@ const FormList = (props) => {
   )
 }
 
-export default FormList
+export default FormEditTodo

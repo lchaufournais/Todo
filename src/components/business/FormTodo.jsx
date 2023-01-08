@@ -31,7 +31,11 @@ const FormTodo = (props) => {
         <h1 className="flex font-bold text-xl first:border-b pb-3 mt-2 pl-5">
           Create a new todo
         </h1>
-        <FormField name="description" label="Description"></FormField>
+        <FormField
+          defaultValue=""
+          name="description"
+          label="Description"
+        ></FormField>
         <div className="font-bold fixed bottom-4 right-4">
           <Link href={routes.home} className="mr-5">
             Cancel

@@ -9,8 +9,8 @@ const CreateListPage = () => {
   const router = useRouter()
   const handleSubmit = useCallback(
     (values) => {
-      createList(values)
-      router.push(routes.home)
+      const list = createList(values)
+      router.push(routes.view.list(list.id))
     },
     [router, createList]
   )
